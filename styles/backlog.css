@@ -1,0 +1,219 @@
+.backlog {
+    /* width: calc(100% - 40px); */
+    padding: 0 20px 0 20px;
+    /* height: 100%; */
+    width: 100%;
+}
+
+.backlog-bottom {
+    height: calc(100% - 190.4px);
+    overflow-y: auto;
+}
+
+.backlog-bottom::-webkit-scrollbar {
+    display: none;
+}
+
+.backlog-headline {
+    margin: 50px 0 50px 0;
+}
+
+.backlog-headline h2 {
+    margin: 0;
+}
+
+.backlog-headline span {
+    color: #1C2D92;
+}
+
+.titles {
+    font-weight: bolder;
+    font-size: 18px;
+    color: #1C2D92;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.pic-and-name {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0 0 0;
+    border-radius: 10px;
+    padding: 0 0 0 20px;
+    border-left: 5px solid orange;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.pic-and-name:hover {
+    background-color: #f6f5fb;
+}
+
+.img-and-name-email {
+    display: flex;
+    align-items: center;
+    height: 80px;
+}
+
+.img-and-name-email img {
+    width: 50px;
+    margin-right: 20px;
+}
+
+.name-and-email {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.email {
+    color: #1C2D92;
+}
+
+.category1 {
+    display: flex;
+    justify-content: center;
+    margin-left: 40px;
+}
+
+.description-and-delete {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.description {
+    width: 250px;
+    word-break: break-all;
+    display: flex;
+    margin-left: -50px;
+    justify-content: flex-end;
+    padding-right: 40px;
+}
+
+@media (max-width: 1300px) {
+    .backlog-bottom {
+        height: calc(100% - 190.4px);
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 980px) {
+    .backlog {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+    .backlog-normal-view,
+    .titles {
+        display: none;
+    }
+    .backlog-top {
+        width: 100%;
+    }
+    .backlog-responsiv {
+        display: block !important;
+        width: 600px;
+        height: 400px;
+        margin: 20px;
+    }
+    .pic-and-name-r {
+        width: 600px;
+        height: 400px;
+        /* padding: 0;
+        margin: 0; */
+        background-color: #F3F2FB;
+        border-left: 5px solid orange;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .name-and-email-r span {
+        color: #1C2D92;
+    }
+    .img-and-name-email-r {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        margin: 20px 0 20px 0;
+    }
+    .img-and-name-email-r img {
+        width: 50px;
+        margin-right: 20px;
+    }
+    .r-top,
+    .r-middle,
+    .r-bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .title-responsive {
+        font-weight: bolder;
+        font-size: 18px;
+        width: 100%;
+        text-align: center;
+        color: #1C2D92;
+    }
+    .category1,
+    .description-r {
+        margin: 20px 0 20px 0;
+    }
+    .name-and-email-r {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .details-r {
+        padding: 0;
+        margin: 0;
+    }
+    .description-r {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .r-bottom {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .description-and-delete-r {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        width: calc(100% - 40px);
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .pic-and-name-r,
+    .backlog-responsiv {
+        width: 400px;
+        height: 350px;
+    }
+}
+
+@media (max-width: 550px) {
+    .pic-and-name-r,
+    .backlog-responsiv {
+        width: 250px;
+    }
+    /* .backlog-responsiv {
+        display: hidden !important;
+    } */
+}

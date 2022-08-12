@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>board</title>
+    <link rel="shortcut icon" href="./img/joinlogo.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="./styles/board.css">
+    <link rel="stylesheet" href="./styles/impressum.css">
+    <link rel="stylesheet" href="./styles/addTask.css">
+    <link rel="stylesheet" href="./styles/privacy.css">
+    <link rel="stylesheet" href="./styles/backlog.css">
+
+
+    <script src="./scripts/addTask.js"></script>
+    <script src="./scripts/board.js"></script>
+    <script src="./smallest_backend_ever/mini_backend.js"></script>
+    <script src="./scripts/script.js"></script>
+
+
+</head>
+
+<body onload="showBoard()">
+    <div class="navbar-and-content">
+        <div class="navbar">
+            <img onclick="showBoard()" src="./img/logo.png" alt="">
+            <div class="links">
+                <span onclick="showBoard()">Board</span>
+                <span onclick="showBacklog()">Backlog</span>
+                <span onclick="addTask()">Add Task</span>
+                <span href="#">Help</span>
+            </div>
+
+            <img class="user-img-navbar" src="./img/2.png" alt="">
+
+            <div class="impressum-and-datenschutz">
+                <span class="impressum" onclick="showImpressum()">Imprint</span>
+                <span onclick="showPrivacy()">Policy</span>
+            </div>
+        </div>
+
+        <div class="responsiv-nav d-none">
+            <div class="navbar-resonsive">
+                <img onclick="showBoard()" src="./img/logo.png" alt="">
+                <div class="links-responsive">
+                    <span onclick="showBoard()">Board</span>
+                    <span onclick="showBacklog()">Backlog</span>
+                    <span onclick="addTask()">Add Task</span>
+                    <span href="#">Help</span>
+                </div>
+
+                <div class="impressum-and-datenschutz-responsive">
+                    <div>
+                        <span class="impressum" onclick="showImpressum()">Imprint</span>
+                        <span onclick="showPrivacy()">Policy</span>
+                    </div>
+                    <img class="user-img-navbar-responsive" src="./img/2.png" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="content-dynamic" id="content-dynamic">
+
+            <div class="content" id="content">
+                <div class="todo">
+                    <span>TO DO</span>
+                    <div class="todo-container" id="todo" ondrop="moveTo('Management')" ondragover="allowDrop(event)">
+
+                    </div>
+                </div>
+                <div class="todo">
+                    <span>IN PROGRESS</span>
+                    <div class="todo-container in-progress" id="in-progress" ondrop="moveTo('IT')" ondragover="allowDrop(event)">
+
+                    </div>
+                </div>
+                <div class="todo">
+                    <span>TESTING</span>
+                    <div class="todo-container testing" id="testing" ondrop="moveTo('Design')" ondragover="allowDrop(event)">
+
+                    </div>
+                </div>
+                <div class="todo">
+                    <span>DONE</span>
+                    <div class="todo-container done" id="done" ondrop="moveTo('Product')" ondragover="allowDrop(event)">
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
