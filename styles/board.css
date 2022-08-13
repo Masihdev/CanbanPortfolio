@@ -12,6 +12,8 @@
             }
             
             .navbar {
+                font-family: 'Open Sans', sans-serif;
+                /* font-weight: bold; */
                 background-color: #1C2D92;
                 width: 15%;
                 display: flex;
@@ -41,7 +43,6 @@
             
             .links span {
                 line-height: 30px;
-                font-weight: bolder;
                 font-size: 20px;
                 color: white;
                 border: 5px solid transparent;
@@ -86,7 +87,6 @@
             
             .impressum-and-datenschutz span {
                 font-size: 16px;
-                font-weight: bold;
             }
             
             .impressum-and-datenschutz span:hover {
@@ -109,7 +109,6 @@
                 align-items: center;
                 width: 100% !important;
                 padding: 0 20px 0 20px;
-                /* background-color: red; */
             }
             
             .todo {
@@ -123,7 +122,8 @@
             .todo span {
                 font-size: 22px;
                 text-align: center;
-                font-weight: bolder;
+                font-weight: bold;
+                font-family: 'Open Sans', sans-serif;
             }
             
             .todo-container {
@@ -173,7 +173,7 @@
                 margin: 5px;
                 border-radius: 5px;
                 color: white;
-                font-weight: bold;
+                font-family: 'Open Sans', sans-serif;
                 display: flex;
                 justify-content: space-between;
             }

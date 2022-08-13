@@ -1,13 +1,19 @@
 let currentDraggedElement;
 
 
-
-// load tasks on board
+/**
+ * loads tasks from mini-backend-server on board
+ */
 
 async function loadTasks() {
     await downloadFromServer();
     tasksOnBoard = JSON.parse(backend.getItem('tasksOnBoard')) || [];
 }
+
+
+/**
+ * loads tasks from mini-backend-server on backlog
+ */
 
 async function loadTasksBacklog() {
     await downloadFromServer();
@@ -15,7 +21,9 @@ async function loadTasksBacklog() {
 }
 
 
-// update board
+/**
+ * loads tasks from mini-backend-server on first column of board and updates it's contents with nested for loop and calls the rest columns.
+ */
 
 async function updateBoard() {
     await loadTasks();
@@ -52,7 +60,9 @@ async function updateBoard() {
 }
 
 
-// update category in progress
+/**
+ * loads tasks from mini-backend-server on second column of board and updates it's contents with nested for loop
+ */
 
 function updateCategoryInProgress() {
     let inProgress = tasksOnBoard.filter(t => t['category'] == 'IT');
@@ -85,7 +95,9 @@ function updateCategoryInProgress() {
 }
 
 
-// update category testing
+/**
+ * loads tasks from mini-backend-server on third column of board and updates it's contents with nested for loop
+ */
 
 function updateCategoryTesting() {
     let testing = tasksOnBoard.filter(t => t['category'] == 'Design');
@@ -118,7 +130,9 @@ function updateCategoryTesting() {
 }
 
 
-// update category done
+/**
+ * loads tasks from mini-backend-server on fourth column of board and updates it's contents with nested for loop
+ */
 
 function updateCategoryDone() {
     let done = tasksOnBoard.filter(t => t['category'] == 'Product');
@@ -151,10 +165,9 @@ function updateCategoryDone() {
 }
 
 
-// function renderTasksOnBoard() {
-//     return
-// }
-
+/**
+ * deletes a task from board using id as reference
+ */
 
 async function deleteTaskBoard(id) {
     let taskCard = tasksOnBoard.findIndex(obj => obj.id == id);
@@ -162,6 +175,11 @@ async function deleteTaskBoard(id) {
     await backend.setItem('tasksOnBoard', JSON.stringify(tasksOnBoard));
     updateBoard();
 }
+
+
+/**
+ * deletes a task from backlog using id as reference
+ */
 
 async function deleteTaskBacklog(id) {
     let taskCard = tasksInBacklog.findIndex(obj => obj.id == id);
@@ -171,35 +189,27 @@ async function deleteTaskBacklog(id) {
 }
 
 
-// function test() {
-//     if (urgency == 'High') {
-//         document.getElementById('pic-and-name').style.borderColor = 'red';
-//         // } else if (category == 'IT') {
-//         //     document.getElementById('pic-and-name').style.borderColor = 'green';
-//         // } else if (category == 'Design') {
-//         //     document.getElementById('pic-and-name').style.borderColor = 'yellow';
-//         // } else if (category == 'Product') {
-//         //     document.getElementById('pic-and-name').style.borderColor = 'pink';
-//         // }
-//     }
-// }
-
-
-// start dragging 
+/**
+ * defines id als reference for tasks that are going to be dragged from one column to another column on board.
+ */
 
 function startdragging(id) {
     currentDraggedElement = id;
 }
 
 
-// allow drop
+/**
+ * allow drop on columns
+ */
 
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
 
-// move to 
+/**
+ * changes the dragged task catagory as soon as it's dropped on another column.
+ */
 
 async function moveTo(category) {
     let currentId = tasksOnBoard.find(t => t.id == currentDraggedElement);
@@ -209,6 +219,10 @@ async function moveTo(category) {
     updateBoard();
 }
 
+
+/**
+ * deletes all added tasks from server
+ */
 
 function deleteAllTasks() {
     backend.deleteItem('tasksOnBoard');

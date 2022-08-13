@@ -13,12 +13,17 @@
     <link rel="stylesheet" href="./styles/addTask.css">
     <link rel="stylesheet" href="./styles/privacy.css">
     <link rel="stylesheet" href="./styles/backlog.css">
+    <link rel="stylesheet" href="./styles/help.css">
+
+
 
 
     <script src="./scripts/addTask.js"></script>
     <script src="./scripts/board.js"></script>
     <script src="./smallest_backend_ever/mini_backend.js"></script>
     <script src="./scripts/script.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookie-bar/cookiebar-latest.min.js?tracking=1&thirdparty=1&always=1"></script>
+
 
 
 </head>
@@ -31,7 +36,7 @@
                 <span onclick="showBoard()">Board</span>
                 <span onclick="showBacklog()">Backlog</span>
                 <span onclick="addTask()">Add Task</span>
-                <span href="#">Help</span>
+                <span onclick="showHelp()">Help</span>
             </div>
 
             <img class="user-img-navbar" src="./img/2.png" alt="">
@@ -49,7 +54,7 @@
                     <span onclick="showBoard()">Board</span>
                     <span onclick="showBacklog()">Backlog</span>
                     <span onclick="addTask()">Add Task</span>
-                    <span href="#">Help</span>
+                    <span onclick="showHelp()">Help</span>
                 </div>
 
                 <div class="impressum-and-datenschutz-responsive">
@@ -91,9 +96,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
 </body>
 

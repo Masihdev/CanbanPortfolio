@@ -36,8 +36,9 @@ let employee = [{
 ];
 
 
-
-// get values from add task form
+/**
+ * gets values from input fields and pushes them to tasksOnBoard and tasksinBacklog arrays.
+ */
 
 async function addNewTask() {
     title = document.getElementById('title');
@@ -64,7 +65,9 @@ async function addNewTask() {
 }
 
 
-// reset
+/**
+ * clears form input fields after the values are pushed to arrays.
+ */
 
 function reset() {
     title.value = '';
@@ -75,20 +78,9 @@ function reset() {
 }
 
 
-
-// render avatar 
-
-// function renderAvatar() {
-//     let avatar = document.getElementById('avatar');
-//     avatar.innerHTML = '';
-
-//     for (let i = 0; i < users.length; i++) {
-//         const user = users[i];
-
-//         avatar.innerHTML += `<img src="./img/${user}">`;
-
-//     }
-// }
+/**
+ * visualize assigned user while selecting
+ */
 
 function selectUser(i) {
     let user = document.getElementById(`user-${i}`);

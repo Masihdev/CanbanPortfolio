@@ -16,10 +16,12 @@
 
 .backlog-headline {
     margin: 50px 0 50px 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
 }
 
 .backlog-headline h2 {
-    margin: 0;
+    /* margin: 0; */
 }
 
 .backlog-headline span {
@@ -27,6 +29,8 @@
 }
 
 .titles {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
     font-weight: bolder;
     font-size: 18px;
     color: #1C2D92;
@@ -37,6 +41,7 @@
 }
 
 .pic-and-name {
+    font-family: 'Open Sans', sans-serif;
     background-color: #ffffff;
     display: flex;
     align-items: center;

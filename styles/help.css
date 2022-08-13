@@ -1,0 +1,88 @@
+.help {
+    padding: 0 20px;
+    overflow-y: auto;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.help-title {
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0 10px 0;
+}
+
+.help-title h2 {
+    margin-top: 0;
+}
+
+.help-board,
+.help-add-task,
+.help-backlog,
+.help-title {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-left: 5px solid orange;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.help-board h2,
+.help-backlog h2,
+.help-add-task h2 {
+    text-align: center;
+}
+
+.h-backlog,
+.h-board,
+.h-add-task {
+    display: flex;
+}
+
+.h-backlog img {
+    margin-right: 20px;
+}
+
+.h-board p,
+.h-backlog p,
+.h-add-task p {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.help-add-task p,
+.help-backlog p,
+.help-board p,
+.help-title p,
+.info p {
+    line-height: 30px;
+}
+
+
+/* .............responsiv......... */
+
+@media (max-width: 970px) {
+    .h-board img,
+    .h-add-task img,
+    .h-backlog img {
+        width: 300px;
+    }
+}
+
+@media (max-width: 600px) {
+    .h-board img,
+    .h-add-task img,
+    .h-backlog img {
+        width: 100px;
+    }
+    .help-add-task p,
+    .help-backlog p,
+    .help-board p,
+    .help-title p,
+    .info p {
+        font-size: 15px;
+    }
+    .help::-webkit-scrollbar {
+        display: none;
+    }
+}

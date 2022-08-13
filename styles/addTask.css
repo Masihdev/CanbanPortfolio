@@ -7,6 +7,8 @@
 }
 
 .title {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -16,15 +18,15 @@
 
 .title span {
     font-size: 22px;
-    font-weight: bolder;
 }
 
 .title p {
-    margin-top: 5px;
     color: #1C2D92;
 }
 
 .form {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
     width: calc(100% - 80px);
     background-color: #FFFFFF;
     display: flex;
@@ -40,7 +42,6 @@
 .form-title,
 .form-date label {
     color: #1C2D92;
-    font-weight: bold;
 }
 
 .input-inner {
@@ -76,7 +77,7 @@ select {
 }
 
 .input-top-m {
-    margin: 10px 0 10px 0;
+    margin: 20px 0 20px 0;
 }
 
 .input-width {
@@ -86,6 +87,7 @@ select {
 }
 
 textarea {
+    font-family: 'Open Sans', sans-serif;
     height: 200px !important;
     resize: none;
 }
@@ -209,35 +211,35 @@ textarea::-webkit-scrollbar {
 
 @media(max-width: 1300px) {
     .input-width {
-        height: 40px;
+        /* height: 40px; */
         width: 450px;
     }
 }
 
 @media(max-width: 1020px) {
     .input-width {
-        height: 40px;
+        /* height: 40px; */
         width: 400px;
     }
 }
 
 @media(max-width: 920px) {
     .input-width {
-        height: 40px;
+        /* height: 40px; */
         width: 350px;
     }
 }
 
 @media(max-width: 812px) {
     .input-width {
-        height: 35px;
+        /* height: 35px; */
         width: 300px;
     }
 }
 
 @media(max-width: 812px) {
     .input-width {
-        height: 30px;
+        /* height: 30px; */
         width: 250px;
     }
     .form-title,
@@ -249,7 +251,7 @@ textarea::-webkit-scrollbar {
 
 @media(max-width: 610px) {
     .input-width {
-        height: 35px;
+        /* height: 35px; */
         width: 450px;
     }
     .d-flex {
