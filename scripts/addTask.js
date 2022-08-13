@@ -12,26 +12,22 @@ let selectedEmployee;
 let employee = [{
         'name': 'John',
         'email': 'john@gmail.com',
-        'pic': '1.png',
-        'id': ''
+        'pic': '1.png'
     },
     {
         'name': 'Michael',
         'email': 'michael@yahoo.de',
-        'pic': '2.png',
-        'id': ''
+        'pic': '2.png'
     },
     {
         'name': 'Cathrine',
         'email': 'cathrine@gmail.de',
-        'pic': '3.png',
-        'id': ''
+        'pic': '3.png'
     },
     {
         'name': 'Bahar',
         'email': 'bahar@web.de',
-        'pic': '4.png',
-        'id': ''
+        'pic': '4.png'
     }
 ];
 

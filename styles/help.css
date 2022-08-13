@@ -81,6 +81,7 @@
     .help-title p,
     .info p {
         font-size: 15px;
+        line-height: 20px;
     }
     .help::-webkit-scrollbar {
         display: none;

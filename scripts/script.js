@@ -144,7 +144,7 @@ function showBacklogBottom() {
 
         for (let j = 0; j < task['employee'].length; j++) {
             const element = task['employee'][j];
-            eImg.src += `./img/${element.pic}`;
+            eImg.src = `./img/${element.pic}`;
             eName.innerHTML += `${element.name}`;
             eEmail.innerHTML += `${element.email}`;
 
