@@ -37,6 +37,7 @@ async function updateBoard() {
             <div>
                 <p>${element['title']}</p>
                 <p>${element['category']}</p>
+                <!--<p class="dragbox-description">${element['description']}</p>-->
                 <p>${element['urgency']}</p>
                 <p>${element['date']}</p>
             </div>
