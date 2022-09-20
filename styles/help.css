@@ -1,5 +1,5 @@
 .help {
-    padding: 0 20px;
+    padding: 20px;
     overflow-y: auto;
     font-family: 'Open Sans', sans-serif;
 }
@@ -7,11 +7,10 @@
 .help-title {
     display: flex;
     flex-direction: column;
-    margin: 50px 0 10px 0;
 }
 
-.help-title h2 {
-    margin-top: 0;
+.help-title span {
+    font-weight: bold;
 }
 
 .help-board,
@@ -26,9 +25,14 @@
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
-.help-board h2,
-.help-backlog h2,
-.help-add-task h2 {
+.help-add-task {
+    margin-bottom: 0;
+}
+
+.help-board h4,
+.help-title,
+.help-backlog h4,
+.help-add-task h4 {
     text-align: center;
 }
 
@@ -83,7 +87,7 @@
         font-size: 15px;
         line-height: 20px;
     }
-    .help::-webkit-scrollbar {
+    /* .help::-webkit-scrollbar {
         display: none;
-    }
+    } */
 }

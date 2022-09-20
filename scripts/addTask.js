@@ -28,6 +28,16 @@ let employee = [{
         'name': 'Bahar',
         'email': 'bahar@web.de',
         'pic': '4.png'
+    },
+    {
+        'name': 'Darya',
+        'email': 'darya@web.de',
+        'pic': 'Masih.jpg'
+    },
+    {
+        'name': 'Masih',
+        'email': 'masih@web.de',
+        'pic': 'masih_img_l (compressed).jpg'
     }
 ];
 
@@ -53,12 +63,23 @@ async function addNewTask() {
         'employee': [selectedEmployee]
     };
 
+    // pushNewTaskToArray();
     tasksOnBoard.push(newTask);
     tasksInBacklog.push(newTask);
     await backend.setItem('tasksOnBoard', JSON.stringify(tasksOnBoard));
     await backend.setItem('tasksInBacklog', JSON.stringify(tasksInBacklog));
     reset();
 }
+
+
+/**
+ * pushs new task to tasksOnBoard and tasksInBacklog arrays.
+ */
+
+// function pushNewTaskToArray() {
+//     tasksOnBoard.push(newTask);
+//     tasksInBacklog.push(newTask);
+// }
 
 
 /**
@@ -88,6 +109,5 @@ function selectUser(i) {
         selectedEmployee = employee[i];
         // tasksOnBoard.push(employee[i]);
         // tasksInBacklog.push(employee[i]);
-
     }
 }

@@ -58,13 +58,13 @@ async function showBacklog() {
         <div class="backlog-top">
             <div class="backlog-headline">
                 <h2>Backlog</h2>
-                <span>Learning Management System Project</span>
+                <p>Learning Management System Project</p>
             </div>
-            <div class="titles">
-                <span>ASSIGNED TO</span>
-                <span class="category">CATEGORY</span>
-                <span class="details">DETAILS</span>
-            </div>
+        </div>
+        <div class="titles">
+            <span>ASSIGNED TO</span>
+            <span class="category">CATEGORY</span>
+            <span class="details">DETAILS</span>
         </div>
 
         <div class="backlog-bottom" id="backlog-bottom">
@@ -105,32 +105,31 @@ function showBacklogBottom() {
     </div>
 
     <div class="backlog-responsiv d-none">
-    <div class="pic-and-name-r" id="pic-and-name">
-        <div class="r-top">
-            <span class="title-responsive">ASSIGNED TO</span>
-            <div class="img-and-name-email-r">
-                <img id="e-img-r${i}"  alt="">
-                <div class="name-and-email-r">
-                    <span id="e-name-r${i}"></span>
-                    <span id="e-email-r${i}" class="email"></span>
+        <div class="pic-and-name-r" id="pic-and-name">
+            <div class="r-top">
+                <span class="title-responsive">ASSIGNED TO</span>
+                <div class="img-and-name-email-r">
+                    <img id="e-img-r${i}"  alt="">
+                    <div class="name-and-email-r">
+                        <span id="e-name-r${i}"></span>
+                        <span id="e-email-r${i}" class="email"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="r-middle">
+                <span class="title-responsive">CATEGORY</span>
+                <div class="category1">${task.category}</div>
+            </div>
+            <div class="r-bottom">
+                <span class="details-r title-responsive">DETAILS</span>
+                <div class="description-and-delete-r">
+                    <img onclick="deleteTaskBacklog(${task['id']})" class="delete" src="./img/delete.ico" alt="">
+                    <div class="description-r">${task.description}</div>
                 </div>
             </div>
         </div>
-
-        <div class="r-middle">
-            <span class="title-responsive">CATEGORY</span>
-            <div class="category1">${task.category}</div>
-        </div>
-
-        <div class="r-bottom">
-            <span class="details-r title-responsive">DETAILS</span>
-            <div class="description-and-delete-r">
-                <img onclick="deleteTaskBacklog(${task['id']})" class="delete" src="./img/delete.ico" alt="">
-                <div class="description-r">${task.description}</div>
-            </div>
-        </div>
     </div>
-</div>
+
         `;
         let eImg = document.getElementById(`e-img${i}`);
         let eName = document.getElementById(`e-name${i}`);
@@ -191,64 +190,68 @@ function addTask() {
     content.innerHTML = `
     <div class="add-task">
         <div class="title">
-            <span>Add Task</span>
+            <h2>Add Task</h2>
             <p class="">Learning Management System Project</p>
         </div>
+        <div class="form-container">
+            <form onsubmit="addNewTask();return false" class="form">
+                <div class="d-flex">
+                    <div class="form-title m-right-50 dflex-col">
+                        <label>TITLE</label>
+                        <input id="title" required class="input-inner input-width input-top-m" type="text" placeholder="Management Meeting Preparation">
+                    </div>
+                    <div class="form-date dflex-col">
+                        <label>DUE DATE</label>
+                        <input id="date" required class="input-inner input-width input-top-m" type="date">
+                    </div>
+                </div>
 
-        <form onsubmit="addNewTask();return false" class="form">
-            <div class="d-flex">
-             <div class="form-title m-right-50 dflex-col">
-                    <label>TITLE</label>
-                    <input id="title" required class="input-inner input-width input-top-m" type="text" placeholder="Management Meeting Preparation">
+                <div class="d-flex">
+                    <div class="form-title dflex-col m-right-50">
+                        <label>CATAGORY</label>
+                        <select id="category" class="input-inner input-top-m" required>
+                            <option value="" selected>None</option>    
+                            <option value="Management">Management</option>
+                            <option value="IT">IT</option>
+                            <option value="Design">Design</option>
+                            <option value="Product">Product</option>
+                        </select>
+                    </div>
+                    <div class="form-date dflex-col">
+                        <label>URGENCY</label>
+                        <select id="urgency" class="input-inner input-top-m select2" required>
+                            <option value="" selected>None</option>        
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="form-date dflex-col">
-                    <label>DUE DATE</label>
-                    <input id="date" required class="input-inner input-width input-top-m " type="date">
-                </div>
-            </div>
-            <div class="d-flex">
-                <div class="form-title dflex-col m-right-50">
-                    <label>CATAGORY</label>
-                    <select id="category" class="input-width input-top-m" required>
-                        <option value="" selected>None</option>    
-                        <option value="Management">Management</option>
-                        <option value="IT">IT</option>
-                        <option value="Design">Design</option>
-                        <option value="Product">Product</option>
-                    </select>
-                </div>
-                <div class="form-date dflex-col">
-                    <label>URGENCY</label>
-                    <select id="urgency" class="input-width input-top-m" required>
-                        <option value="" selected>None</option>        
-                        <option value="High">High</option>
-                        <option value="Medium">Medium</option>
-                        <option value="Low">Low</option>
-                    </select>
-                </div>
-            </div>
-            <div class="d-flex">
-                <div class="form-title dflex-col m-right-50">
-                    <label>DESCRIPTION</label>
-                    <textarea id="description" required class="input-inner input-width input-top-m" name="" id="" cols="30" rows="10"></textarea>
-                </div>
-                <div class="form-date input-width">
-                <label>ASSIGNED TO</label>
 
-                    <div class="assignedto-pic ">
-                        <div id="avatar" class="avatar-container">
+                <div class="d-flex txtarea-and-pic">
+                    <div class="form-title dflex-col m-right-50">
+                        <label>DESCRIPTION</label>
+                        <textarea id="description" required class="input-inner input-width" name="" id="" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="pic-and-btn form-title dflex-col">
+                        <label>ASSIGNED TO</label>
+                        <div class="assignedto-pic input-top-m input-width">
+                            <div id="avatar" class="avatar-container ">
 
+                            </div>
                         </div>
-                        <div class="btns">
-                            <span onclick="reset()">Cancel</span>
-                            <button type="submit">CREATE TASK</button>
+                        <div class="btns input-width">
+                            <button onclick="reset()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="submit">Cancel</button>
+                            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="submit">CREATE TASK</button>
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
     `;
+
+
     let avatar = document.getElementById('avatar');
     avatar.innerHTML = '';
     for (let j = 0; j < employee.length; j++) {
@@ -264,13 +267,14 @@ function showHelp() {
     content.innerHTML = `
     <div class="help">
         <div class="help-title">
-            <h2>Join</h2>
+            <h3>Join</h3>
             <span>Learning Management System Project</span>
-            <p>
-                A kanban board is an agile project management tool designed to help visualize work, limit work-in-progress, and maximize efficiency (or flow). It can help both agile and DevOps teams establish order in their daily work. Kanban boards use cards, columns, and continuous improvement to help technology and service teams commit to the right amount of work, and get it done!            </p>
+                <p>
+                    A kanban board is an agile project management tool designed to help visualize work, limit work-in-progress, and maximize efficiency (or flow). It can help both agile and DevOps teams establish order in their daily work. Kanban boards use cards, columns, and continuous improvement to help technology and service teams commit to the right amount of work, and get it done!            
+                </p>
         </div>
         <div class="help-board">
-            <h2>BOARD</h2>
+            <h4>BOARD</h4>
             <div class="h-board">
                 <p>
                     Here you can get an overview of all your tasks at a glance with everything view. You can simply drag and drop tasks between the four sections, the background will change accordingly. When a task is done, you can simply delete it form the board by clicking on delete button. For tracking purposes you can always find a copy of the deleted task in backlog.
@@ -280,7 +284,7 @@ function showHelp() {
         </div>
 
         <div class="help-backlog">
-            <h2>Backlog</h2>
+            <h4>Backlog</h4>
             <div class="h-backlog">
                 <img src="./img/ggg.png" alt="">
                 <p>
@@ -290,7 +294,7 @@ function showHelp() {
         </div>
 
         <div class="help-add-task">
-            <h2>Add Task</h2>
+            <h4>Add Task</h4>
             <div class="h-add-task">
                 <p>
                     You can add a task by filling all the input fields and clicking the create button.You will need to fill the title of task, the date, category, urgency and description and assign it to your team member. The created task can you find on board or in backlog.
@@ -309,8 +313,7 @@ function showHelp() {
 function showImpressum() {
     emptyContent();
     content.innerHTML = `
-    <div class="imprint">
-    <div class='impressum'><h1>Impressum</h1><p>Angaben gemäß § 5 TMG</p><p>Masihullah Massudi <br> 
+    <div class='impressum'><h3>Impressum</h3><p>Angaben gemäß § 5 TMG</p><p>Masihullah Massudi <br> 
     Juri-Gagarin-Ring 128<br> 
     99084 Erfurt <br> 
     </p><p><strong>Kontakt:</strong> <br>
@@ -328,7 +331,6 @@ function showImpressum() {
     Diese Website benutzt Google Adsense, einen Webanzeigendienst der Google Inc., USA (''Google''). Google Adsense verwendet sog. ''Cookies'' (Textdateien), die auf Ihrem Computer gespeichert werden und die eine Analyse der Benutzung der Website durch Sie ermöglicht. Google Adsense verwendet auch sog. ''Web Beacons'' (kleine unsichtbare Grafiken) zur Sammlung von Informationen. Durch die Verwendung des Web Beacons können einfache Aktionen wie der Besucherverkehr auf der Webseite aufgezeichnet und gesammelt werden. Die durch den Cookie und/oder Web Beacon erzeugten Informationen über Ihre Benutzung dieser Website (einschließlich Ihrer IP-Adresse) werden an einen Server von Google in den USA übertragen und dort gespeichert. Google wird diese Informationen benutzen, um Ihre Nutzung der Website im Hinblick auf die Anzeigen auszuwerten, um Reports über die Websiteaktivitäten und Anzeigen für die Websitebetreiber zusammenzustellen und um weitere mit der Websitenutzung und der Internetnutzung verbundene Dienstleistungen zu erbringen. Auch wird Google diese Informationen gegebenenfalls an Dritte übertragen, sofern dies gesetzlich vorgeschrieben oder soweit Dritte diese Daten im Auftrag von Google verarbeiten. Google wird in keinem Fall Ihre IP-Adresse mit anderen Daten der Google in Verbindung bringen. Das Speichern von Cookies auf Ihrer Festplatte und die Anzeige von Web Beacons können Sie verhindern, indem Sie in Ihren Browser-Einstellungen ''keine Cookies akzeptieren'' wählen (Im MS Internet-Explorer unter ''Extras > Internetoptionen > Datenschutz > Einstellung''; im Firefox unter ''Extras > Einstellungen > Datenschutz > Cookies''); wir weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Website voll umfänglich nutzen können. Durch die Nutzung dieser Website erklären Sie sich mit der Bearbeitung der über Sie erhobenen Daten durch Google in der zuvor beschriebenen Art und Weise und zu dem zuvor benannten Zweck einverstanden.</p><br> 
     Website Impressum von <a href="https://www.impressum-generator.de">impressum-generator.de</a>
     </div>
-    </div>
 `;
 }
 
@@ -341,14 +343,14 @@ function showPrivacy() {
     emptyContent();
     content.innerHTML = `
     <div class="privacy">
-    <h1>Privacy Policy</h1>
+    <h3>Privacy Policy</h3>
     <p>Last updated: August 12, 2022</p>
     <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
     <p>We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy. This Privacy Policy has been created with the help of the <a href="https://www.freeprivacypolicy.com/free-privacy-policy-generator/" target="_blank">Free Privacy Policy Generator</a>.</p>
-    <h1>Interpretation and Definitions</h1>
-    <h2>Interpretation</h2>
+    <h4>Interpretation and Definitions</h4>
+    <h4>Interpretation</h4>
     <p>The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
-    <h2>Definitions</h2>
+    <h4>Definitions</h4>
     <p>For the purposes of this Privacy Policy:</p>
     <ul>
     <li>
@@ -385,9 +387,9 @@ function showPrivacy() {
     <p><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</p>
     </li>
     </ul>
-    <h1>Collecting and Using Your Personal Data</h1>
-    <h2>Types of Data Collected</h2>
-    <h3>Personal Data</h3>
+    <h4>Collecting and Using Your Personal Data</h4>
+    <h4>Types of Data Collected</h4>
+    <h4>Personal Data</h4>
     <p>While using Our Service, We may ask You to provide Us with certain personally identifiable information that can be used to contact or identify You. Personally identifiable information may include, but is not limited to:</p>
     <ul>
     <li>
@@ -400,12 +402,12 @@ function showPrivacy() {
     <p>Usage Data</p>
     </li>
     </ul>
-    <h3>Usage Data</h3>
+    <h4>Usage Data</h4>
     <p>Usage Data is collected automatically when using the Service.</p>
     <p>Usage Data may include information such as Your Device's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that You visit, the time and date of Your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
     <p>When You access the Service by or through a mobile device, We may collect certain information automatically, including, but not limited to, the type of mobile device You use, Your mobile device unique ID, the IP address of Your mobile device, Your mobile operating system, the type of mobile Internet browser You use, unique device identifiers and other diagnostic data.</p>
     <p>We may also collect information that Your browser sends whenever You visit our Service or when You access the Service by or through a mobile device.</p>
-    <h2>Use of Your Personal Data</h2>
+    <h4>Use of Your Personal Data</h4>
     <p>The Company may use Personal Data for the following purposes:</p>
     <ul>
     <li>
@@ -442,19 +444,19 @@ function showPrivacy() {
     <li><strong>With other users:</strong> when You share personal information or otherwise interact in the public areas with other users, such information may be viewed by all users and may be publicly distributed outside.</li>
     <li><strong>With Your consent</strong>: We may disclose Your personal information for any other purpose with Your consent.</li>
     </ul>
-    <h2>Retention of Your Personal Data</h2>
+    <h4>Retention of Your Personal Data</h4>
     <p>The Company will retain Your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use Your Personal Data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies.</p>
     <p>The Company will also retain Usage Data for internal analysis purposes. Usage Data is generally retained for a shorter period of time, except when this data is used to strengthen the security or to improve the functionality of Our Service, or We are legally obligated to retain this data for longer time periods.</p>
-    <h2>Transfer of Your Personal Data</h2>
+    <h4>Transfer of Your Personal Data</h4>
     <p>Your information, including Personal Data, is processed at the Company's operating offices and in any other places where the parties involved in the processing are located. It means that this information may be transferred to — and maintained on — computers located outside of Your state, province, country or other governmental jurisdiction where the data protection laws may differ than those from Your jurisdiction.</p>
     <p>Your consent to this Privacy Policy followed by Your submission of such information represents Your agreement to that transfer.</p>
     <p>The Company will take all steps reasonably necessary to ensure that Your data is treated securely and in accordance with this Privacy Policy and no transfer of Your Personal Data will take place to an organization or a country unless there are adequate controls in place including the security of Your data and other personal information.</p>
-    <h2>Disclosure of Your Personal Data</h2>
-    <h3>Business Transactions</h3>
+    <h4>Disclosure of Your Personal Data</h4>
+    <h4>Business Transactions</h4>
     <p>If the Company is involved in a merger, acquisition or asset sale, Your Personal Data may be transferred. We will provide notice before Your Personal Data is transferred and becomes subject to a different Privacy Policy.</p>
-    <h3>Law enforcement</h3>
+    <h4>Law enforcement</h4>
     <p>Under certain circumstances, the Company may be required to disclose Your Personal Data if required to do so by law or in response to valid requests by public authorities (e.g. a court or a government agency).</p>
-    <h3>Other legal requirements</h3>
+    <h4>Other legal requirements</h4>
     <p>The Company may disclose Your Personal Data in the good faith belief that such action is necessary to:</p>
     <ul>
     <li>Comply with a legal obligation</li>
@@ -463,20 +465,20 @@ function showPrivacy() {
     <li>Protect the personal safety of Users of the Service or the public</li>
     <li>Protect against legal liability</li>
     </ul>
-    <h2>Security of Your Personal Data</h2>
+    <h4>Security of Your Personal Data</h4>
     <p>The security of Your Personal Data is important to Us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While We strive to use commercially acceptable means to protect Your Personal Data, We cannot guarantee its absolute security.</p>
-    <h1>Children's Privacy</h1>
+    <h4>Children's Privacy</h4>
     <p>Our Service does not address anyone under the age of 13. We do not knowingly collect personally identifiable information from anyone under the age of 13. If You are a parent or guardian and You are aware that Your child has provided Us with Personal Data, please contact Us. If We become aware that We have collected Personal Data from anyone under the age of 13 without verification of parental consent, We take steps to remove that information from Our servers.</p>
     <p>If We need to rely on consent as a legal basis for processing Your information and Your country requires consent from a parent, We may require Your parent's consent before We collect and use that information.</p>
-    <h1>Links to Other Websites</h1>
+    <h4>Links to Other Websites</h4>
     <p>Our Service may contain links to other websites that are not operated by Us. If You click on a third party link, You will be directed to that third party's site. We strongly advise You to review the Privacy Policy of every site You visit.</p>
     <p>We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.</p>
-    <h1>Changes to this Privacy Policy</h1>
+    <h4>Changes to this Privacy Policy</h4>
     <p>We may update Our Privacy Policy from time to time. We will notify You of any changes by posting the new Privacy Policy on this page.</p>
     <p>We will let You know via email and/or a prominent notice on Our Service, prior to the change becoming effective and update the &quot;Last updated&quot; date at the top of this Privacy Policy.</p>
     <p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
     Logos stammen u. A.von <a href="https://icons8.com">https://icons8.com</a>
-    <h1>Contact Us</h1>
+    <h4>Contact Us</h4>
     <p>If you have any questions about this Privacy Policy, You can contact us:</p>
     <ul>
     <li>By email: masihullahmassudi85@gmail.com</li>

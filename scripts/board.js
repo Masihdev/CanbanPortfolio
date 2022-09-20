@@ -1,6 +1,5 @@
 let currentDraggedElement;
 
-
 /**
  * loads tasks from mini-backend-server on board
  */
@@ -22,7 +21,7 @@ async function loadTasksBacklog() {
 
 
 /**
- * loads tasks from mini-backend-server on first column of board and updates it's contents with nested for loop and calls the rest columns.
+ * loads tasks from mini-backend-server on first column of board, updates it's contents with nested for loop and calls the rest columns.
  */
 
 async function updateBoard() {
@@ -232,4 +231,27 @@ function deleteAllTasks() {
     // backend.setItem('tasksInBacklog', JSON.stringify(tasksInBacklog));
     updateBoard();
     // showBacklog();
+}
+
+
+
+
+
+
+function generateNewTask(task, i) {
+    return `
+    <div class="dragbox dragbox-priority1" ondragstart="startdragging(${element['id']})" draggable="true">
+        <div>
+            <p>${task['title']}</p>
+            <p>${task['category']}</p>
+            <!--<p class="dragbox-description">${element['description']}</p>-->
+            <p>${task['urgency']}</p>
+            <p>${task['date']}</p>
+        </div>
+        <div class="dragbox-img">
+            <img id="b-img${i}" class="user-photo" alt="">
+            <img onclick="deleteTaskBoard(${task['id']})" class="delete" src="./img/delete.ico" alt="">
+        </div> 
+    </div>
+    `;
 }
