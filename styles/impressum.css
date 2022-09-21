@@ -2,7 +2,7 @@
     width: 100% !important;
     padding: 20px;
     overflow-y: auto;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif !important;
 }
 
 .impressum h3 {

@@ -1,5 +1,6 @@
 let content;
 
+
 function emptyContent() {
     content = document.getElementById('content-dynamic');
     content.innerHTML = '';
@@ -12,7 +13,17 @@ function emptyContent() {
 
 function showBoard() {
     emptyContent();
-    content.innerHTML = `
+    content.innerHTML = generateBoard();
+    updateBoard();
+}
+
+
+/**
+ * generates board.
+ */
+
+function generateBoard() {
+    return `
     <div class="content" id="content">
         <div class="todo">
             <span>TO DO</span>
@@ -42,7 +53,6 @@ function showBoard() {
         </div>
     </div>
 `;
-    updateBoard();
 }
 
 
@@ -53,7 +63,18 @@ function showBoard() {
 async function showBacklog() {
     await loadTasksBacklog();
     emptyContent();
-    content.innerHTML += `
+
+    content.innerHTML += generateBacklogTop();
+    showBacklogBottom();
+}
+
+
+/**
+ * generates backlogTop.
+ */
+
+function generateBacklogTop() {
+    return `
     <div class="backlog">
         <div class="backlog-top">
             <div class="backlog-headline">
@@ -72,7 +93,6 @@ async function showBacklog() {
         </div>
     </div>
     `;
-    showBacklogBottom();
 }
 
 
@@ -81,12 +101,23 @@ async function showBacklog() {
  */
 
 function showBacklogBottom() {
+    let backlogBottom = document.getElementById('backlog-bottom');
+    // backlogBottom.innerHTML = '';
+
     for (let i = 0; i < tasksInBacklog.length; i++) {
         const task = tasksInBacklog[i];
+        backlogBottom.innerHTML += generateNewTaskInBacklogBottom(i, task);
+        renderEmployeeBacklog(i, task);
+    }
+}
 
-        let backlogBottom = document.getElementById('backlog-bottom');
-        // backlogBottom.innerHTML = '';
-        backlogBottom.innerHTML += `
+
+/**
+ * renders new task in backlogBottom.
+ */
+
+function generateNewTaskInBacklogBottom(i, task) {
+    return `
     <div class="backlog-normal-view">
         <div class="pic-and-name" id="pic-and-name">
             <div class="img-and-name-email">
@@ -103,7 +134,6 @@ function showBacklogBottom() {
             </div>
         </div>
     </div>
-
     <div class="backlog-responsiv d-none">
         <div class="pic-and-name-r" id="pic-and-name">
             <div class="r-top">
@@ -129,56 +159,34 @@ function showBacklogBottom() {
             </div>
         </div>
     </div>
-
-        `;
-        let eImg = document.getElementById(`e-img${i}`);
-        let eName = document.getElementById(`e-name${i}`);
-        let eEmail = document.getElementById(`e-email${i}`);
-
-        let eImgR = document.getElementById(`e-img-r${i}`);
-        let eNameR = document.getElementById(`e-name-r${i}`);
-        let eEmailR = document.getElementById(`e-email-r${i}`);
-
-
-
-        for (let j = 0; j < task['employee'].length; j++) {
-            const element = task['employee'][j];
-            eImg.src = `./img/${element.pic}`;
-            eName.innerHTML += `${element.name}`;
-            eEmail.innerHTML += `${element.email}`;
-
-            eImgR.src += `./img/${element.pic}`;
-            eNameR.innerHTML += `${element.name}`;
-            eEmailR.innerHTML += `${element.email}`;
-        }
-        // renderEmployeeBacklog();
-    }
+`;
 }
 
 
-// function renderEmployeeBacklog() {
+/**
+ * renders img, name and email at created task in backlogBottom-normal and backlogBottom-responsive.
+ */
 
-//     let eImg = document.getElementById(`e-img${i}`);
-//     let eName = document.getElementById(`e-name${i}`);
-//     let eEmail = document.getElementById(`e-email${i}`);
+function renderEmployeeBacklog(i, task) {
+    let eImg = document.getElementById(`e-img${i}`);
+    let eName = document.getElementById(`e-name${i}`);
+    let eEmail = document.getElementById(`e-email${i}`);
 
-//     let eImgR = document.getElementById(`e-img-r${i}`);
-//     let eNameR = document.getElementById(`e-name-r${i}`);
-//     let eEmailR = document.getElementById(`e-email-r${i}`);
+    let eImgR = document.getElementById(`e-img-r${i}`);
+    let eNameR = document.getElementById(`e-name-r${i}`);
+    let eEmailR = document.getElementById(`e-email-r${i}`);
 
+    for (let j = 0; j < task['employee'].length; j++) {
+        const element = task['employee'][j];
+        eImg.src = `./img/${element.pic}`;
+        eName.innerHTML += `${element.name}`;
+        eEmail.innerHTML += `${element.email}`;
 
-
-//     for (let j = 0; j < task['employee'].length; j++) {
-//         const element = task['employee'][j];
-//         eImg.src += `./img/${element.pic}`;
-//         eName.innerHTML += `${element.name}`;
-//         eEmail.innerHTML += `${element.email}`;
-
-//         eImgR.src += `./img/${element.pic}`;
-//         eNameR.innerHTML += `${element.name}`;
-//         eEmailR.innerHTML += `${element.email}`;
-//     }
-// }
+        eImgR.src += `./img/${element.pic}`;
+        eNameR.innerHTML += `${element.name}`;
+        eEmailR.innerHTML += `${element.email}`;
+    }
+}
 
 
 /**
@@ -187,7 +195,24 @@ function showBacklogBottom() {
 
 function addTask() {
     emptyContent();
-    content.innerHTML = `
+    content.innerHTML = generateAddTask();
+
+    let avatar = document.getElementById('avatar');
+    avatar.innerHTML = '';
+
+    for (let j = 0; j < employee.length; j++) {
+        const user = employee[j];
+        avatar.innerHTML += `<img onclick="selectUser(${j})" id="user-${j}" src="./img/${user.pic}" class="avatar">`;
+    }
+}
+
+
+/**
+ * generates add-task page.
+ */
+
+function generateAddTask() {
+    return `
     <div class="add-task">
         <div class="title">
             <h2>Add Task</h2>
@@ -205,7 +230,6 @@ function addTask() {
                         <input id="date" required class="input-inner input-width input-top-m" type="date">
                     </div>
                 </div>
-
                 <div class="d-flex">
                     <div class="form-title dflex-col m-right-50">
                         <label>CATAGORY</label>
@@ -227,7 +251,6 @@ function addTask() {
                         </select>
                     </div>
                 </div>
-
                 <div class="d-flex txtarea-and-pic">
                     <div class="form-title dflex-col m-right-50">
                         <label>DESCRIPTION</label>
@@ -250,20 +273,16 @@ function addTask() {
         </div>
     </div>
     `;
-
-
-    let avatar = document.getElementById('avatar');
-    avatar.innerHTML = '';
-    for (let j = 0; j < employee.length; j++) {
-        const user = employee[j];
-
-        avatar.innerHTML += `<img onclick="selectUser(${j})" id="user-${j}" src="./img/${user.pic}" class="avatar">`;
-    }
 }
 
 
+/**
+ * generates help page.
+ */
+
 function showHelp() {
     emptyContent();
+
     content.innerHTML = `
     <div class="help">
         <div class="help-title">
@@ -282,7 +301,6 @@ function showHelp() {
                 <img src="./img/g.png" alt="">
             </div>
         </div>
-
         <div class="help-backlog">
             <h4>Backlog</h4>
             <div class="h-backlog">
@@ -292,7 +310,6 @@ function showHelp() {
                 </p>
             </div>
         </div>
-
         <div class="help-add-task">
             <h4>Add Task</h4>
             <div class="h-add-task">
@@ -307,11 +324,12 @@ function showHelp() {
 
 
 /**
- * renders imprint
+ * generates imprint.
  */
 
 function showImpressum() {
     emptyContent();
+
     content.innerHTML = `
     <div class='impressum'><h3>Impressum</h3><p>Angaben gemäß § 5 TMG</p><p>Masihullah Massudi <br> 
     Juri-Gagarin-Ring 128<br> 
@@ -336,11 +354,12 @@ function showImpressum() {
 
 
 /**
- * renders privacy policy
+ * generates privacy policy.
  */
 
 function showPrivacy() {
     emptyContent();
+
     content.innerHTML = `
     <div class="privacy">
     <h3>Privacy Policy</h3>

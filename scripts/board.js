@@ -21,7 +21,7 @@ async function loadTasksBacklog() {
 
 
 /**
- * loads tasks from mini-backend-server on first column of board, updates it's contents with nested for loop and calls the rest columns.
+ * loads tasks from mini-backend-server on first column of board and updates it's contents with nested for loop.
  */
 
 async function updateBoard() {
@@ -31,21 +31,8 @@ async function updateBoard() {
 
     for (let i = 0; i < todo.length; i++) {
         const element = todo[i];
-        document.getElementById('todo').innerHTML += `
-        <div class="dragbox dragbox-priority1" ondragstart="startdragging(${element['id']})" draggable="true">
-            <div>
-                <p>${element['title']}</p>
-                <p>${element['category']}</p>
-                <!--<p class="dragbox-description">${element['description']}</p>-->
-                <p>${element['urgency']}</p>
-                <p>${element['date']}</p>
-            </div>
-            <div class="dragbox-img">
-                <img id="b-img${i}" class="user-photo" alt="">
-                <img onclick="deleteTaskBoard(${element['id']})" class="delete" src="./img/delete.ico" alt="">
-            </div> 
-        </div>
-        `;
+        document.getElementById('todo').innerHTML += generateTaskCard(i, element);
+
         for (let j = 0; j < element['employee'].length; j++) {
             const employeePic = element['employee'][j];
 
@@ -59,6 +46,23 @@ async function updateBoard() {
     updateCategoryDone();
 }
 
+function generateTaskCard(i, element) {
+    return `
+    <div class="dragbox dragbox-priority1" ondragstart="startdragging(${element['id']})" draggable="true">
+        <div>
+            <p>${element['title']}</p>
+            <p>${element['category']}</p>
+            <!--<p class="dragbox-description">${element['description']}</p>-->
+            <p>${element['urgency']}</p>
+            <p>${element['date']}</p>
+        </div>
+        <div class="dragbox-img">
+            <img id="b-img${i}" class="user-photo" alt="">
+            <img onclick="deleteTaskBoard(${element['id']})" class="delete" src="./img/delete.ico" alt="">
+        </div> 
+    </div>
+    `;
+}
 
 /**
  * loads tasks from mini-backend-server on second column of board and updates it's contents with nested for loop
@@ -232,10 +236,6 @@ function deleteAllTasks() {
     updateBoard();
     // showBacklog();
 }
-
-
-
-
 
 
 function generateNewTask(task, i) {

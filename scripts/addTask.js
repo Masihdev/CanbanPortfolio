@@ -9,6 +9,7 @@ let urgency;
 let description;
 let id;
 let selectedEmployee;
+
 let employee = [{
         'name': 'John',
         'email': 'john@gmail.com',
@@ -46,7 +47,7 @@ let employee = [{
  * gets values from input fields and pushes them to tasksOnBoard and tasksinBacklog arrays.
  */
 
-async function addNewTask() {
+function addNewTask() {
     title = document.getElementById('title');
     date = document.getElementById('date');
     category = document.getElementById('category');
@@ -63,11 +64,8 @@ async function addNewTask() {
         'employee': [selectedEmployee]
     };
 
-    // pushNewTaskToArray();
-    tasksOnBoard.push(newTask);
-    tasksInBacklog.push(newTask);
-    await backend.setItem('tasksOnBoard', JSON.stringify(tasksOnBoard));
-    await backend.setItem('tasksInBacklog', JSON.stringify(tasksInBacklog));
+    pushNewTaskToArray(newTask);
+    saveOnBackend();
     reset();
 }
 
@@ -76,10 +74,20 @@ async function addNewTask() {
  * pushs new task to tasksOnBoard and tasksInBacklog arrays.
  */
 
-// function pushNewTaskToArray() {
-//     tasksOnBoard.push(newTask);
-//     tasksInBacklog.push(newTask);
-// }
+function pushNewTaskToArray(newTask) {
+    tasksOnBoard.push(newTask);
+    tasksInBacklog.push(newTask);
+}
+
+
+/**
+ * stringifies the tasksOnBoard and tasksOnBoard arrays.
+ */
+
+async function saveOnBackend() {
+    await backend.setItem('tasksOnBoard', JSON.stringify(tasksOnBoard));
+    await backend.setItem('tasksInBacklog', JSON.stringify(tasksOnBoard));
+}
 
 
 /**
@@ -107,7 +115,5 @@ function selectUser(i) {
     } else {
         selectedUser.push(employee[i]);
         selectedEmployee = employee[i];
-        // tasksOnBoard.push(employee[i]);
-        // tasksInBacklog.push(employee[i]);
     }
 }
